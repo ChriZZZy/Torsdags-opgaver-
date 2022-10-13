@@ -1,19 +1,19 @@
-PImage nokia;
+PImage nokia; // importing a png
+
 float playerX = 300;
 float playerY = 120;
 
-float locationX = random(75,450);
-float locationY = random(30,275);
+float appleLocationX = random(75,450);
+float appleLocationY = random(30,275);
 float appleradius = 15;
-int score = 0;
 
-// max amount of snake parts
-PVector[] snakepos = new PVector[1600];
+
+PVector[] snakepos = new PVector[1600]; // max amount of snake parts
 float movepixels = 15;
 int framecount = 0;
 float snakespeed = 12;
 int snakelength  = 0;
-int startlength = 1;
+int startlength = 2;
 
 void setup(){
   size(600, 600);
@@ -22,8 +22,6 @@ void setup(){
   imageMode(CENTER);
   nokia = loadImage("nokia.png");
   fill(0);
-  rect(locationX, locationY, 10, 10);
-  // Makes the first "rect/snake" in the array
   for (int j = 0; j < startlength; j++) {
     snakepos[j] = new PVector(playerX, playerY);
   }
@@ -35,7 +33,7 @@ void setup(){
 void draw() {
   background(152, 190, 100);
   fill(0);
-  rect(playerX, playerY, 15, 15);
+  rect(playerX, playerY, 15, 15); //sets the first addition of the player
 
   //it's checking the current snake body part, and if it doesn't exist (as in if we've looped past the length of the snake) then it stops looping
   for (int i = 0; i < snakepos.length; i++) {
@@ -45,7 +43,7 @@ void draw() {
     rect(snakepos[i].x, snakepos[i].y, 15, 15);
   }
   fill(0);
-  rect(locationX, locationY, 10, 10);
+  rect(appleLocationX, appleLocationY, 10, 10); //makes the first addition of the apple 
   //snake movement speed
   if (framecount > 60/snakespeed) {
     framecount = 0;
@@ -67,11 +65,11 @@ void draw() {
 
 
     if (playerX != lastx || playerY != lasty) {
-      //   // Checking if i have hit the "appel using the formular for circualar hit detection and a pref rdaius
-      float distance = sq(locationX - playerX-2.5)+ sq(locationY - playerY-2.5);
+      //   // Checking if the snake have hit the "appel using  math to create a cirkular raidus around the apple.
+      float distance = sq(appleLocationX - playerX-2.5)+ sq(appleLocationY - playerY-2.5);
       if (distance < sq(appleradius)) {
-        locationX = random(75,450);
-        locationY = random(30,275);
+        appleLocationX = random(75,450);
+        appleLocationY = random(30,275);
 
 
         // making the snake 1 "array longer
@@ -94,12 +92,13 @@ void draw() {
   }
   //capping the speed of the snake
   framecount++;
+  
   if (playerX >= 450|| playerX < 75 || playerY >= 275 || playerY < 30) {
     background(0);
     println("GAME OVER");
   }
    noFill();
   rect(75,30,450,275); 
-  image(nokia,width/2,440,600,890);
+  image(nokia,width/2,440,600,890); 
    
 }
