@@ -4,14 +4,14 @@ public class FleetOfCars {
 
     public ArrayList<Car> diffcars = new ArrayList<>();
 
-    void addCar(Car car){
+    void addCar(Car car) {
 
         diffcars.add(car);
     }
 
-    public void printArray(){
-        for (Car c:
-             diffcars) {
+    public void printArray() {
+        for (Car c :
+                diffcars) {
             System.out.println(c);
         }
     }
@@ -22,19 +22,19 @@ public class FleetOfCars {
 
         for (Car c : diffcars) {
 
-         output += c.toString();
+            output += c.toString();
         }
         return output;
     }
 
-    int getTotalRegistrationFeeForFleet(){
+    int getTotalRegistrationFeeForFleet() {
         int fee = 0;
         for (Car c : diffcars) {
 
             fee += c.getRegistrationFee();
         }
 
-         return fee;
+        return fee;
 
     }
 }
