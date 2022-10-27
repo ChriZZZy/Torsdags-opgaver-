@@ -38,7 +38,7 @@ public class GasolineCar extends AFuelCar {
 
 
     public String toString() {
-        return "Fueltype: " + fueltype + "," + " brand: " + brand + "," + " model: " + model + "," + " number of doors: " + numberOfDoors + "," + " registration number: " + registrationNumber + "\n";
+        return "Fueltype: " + fueltype+"," + " brand: " + brand+"," +  " model: " + model+"," + " number of doors: " + numberOfDoors+"," + " registration number: " + registrationNumber + "\n";
 
     }
 }
